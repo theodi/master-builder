@@ -21,8 +21,9 @@ Deployment
 2. Create a new freestyle job.
 3. Add a build step for 'Process Job DSLs'.
 4. Click 'Use the provided DSL script'.
-4. Copy the contents of master-builder.groovy into the 'DSL script' box.
-5. Set then job to build periodically (every 10 minutes, say).
+5. Copy the contents of master-builder.groovy into the 'DSL script' box.
+6. Set the action for removed jobs to 'Delete' (or 'Disable', if you're more paranoid).
+7. Set then job to build periodically (every 10 minutes, say).
 
 Local Development
 -----------------
