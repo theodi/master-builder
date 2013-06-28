@@ -97,6 +97,7 @@ rake""")
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
             tasks {
               "hudson.plugins.postbuildtask.TaskProperties" {
+                logTexts {}
                 "EscalateStatus" "true"
                 "RunIfJobSuccessful" "true"
                 script """\
@@ -112,6 +113,7 @@ git push origin CURRENT"""
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
             tasks {
               "hudson.plugins.postbuildtask.TaskProperties" {
+                logTexts {}
                 "EscalateStatus" "false"
                 "RunIfJobSuccessful" "true"
                 script """\
