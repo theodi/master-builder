@@ -75,12 +75,12 @@ projects.each {
         // Build steps: shell script
         steps {
             shell("""\
-  #!/bin/bash
-  source /var/lib/jenkins/env
-  [[ -s 'package.json' ]] && npm install
-  [[ -s 'Gemfile' ]] && bundle --without=production
-  [[ -s 'db' ]] && rake db:migrate
-  rake""")
+#!/bin/bash
+source /var/lib/jenkins/env
+[[ -s 'package.json' ]] && npm install
+[[ -s 'Gemfile' ]] && bundle --without=production
+[[ -s 'db' ]] && rake db:migrate
+rake""")
         }
 
         // Publishers
@@ -127,11 +127,11 @@ projects.each {
                   "EscalateStatus" "true"
                   "RunIfJobSuccessful" "true"
                   script """\
-  cd \$WORKSPACE;
-  git tag release-\$BUILD_ID;
-  git push origin release-\$BUILD_ID;
-  git tag -f CURRENT;
-  git push origin CURRENT"""
+cd \$WORKSPACE;
+git tag release-\$BUILD_ID;
+git push origin release-\$BUILD_ID;
+git tag -f CURRENT;
+git push origin CURRENT"""
                 }
               }
             }
@@ -143,9 +143,9 @@ projects.each {
                   "EscalateStatus" "false"
                   "RunIfJobSuccessful" "true"
                   script """\
-  #!/bin/bash
-  source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
-  [[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
+#!/bin/bash
+source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
+[[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
                 }
               }
             }          
