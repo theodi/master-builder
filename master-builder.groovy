@@ -21,7 +21,7 @@ projects.each {
 
       // Git configuration
       scm {
-        git("git://github.com/theodi/${projectName}.git", branchName)
+        git("git@github.com:theodi/${projectName}.git", branchName)
       }
   
       // Trigger builds on github pushes
