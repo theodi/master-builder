@@ -10,6 +10,16 @@ def projects = [
   'services-manager'
 ]
 
+// Not all projects include coverage information
+def noCoverage = [
+  'csv-profiler',
+  'member-directory',
+  'odi-bootstrap',
+  'office-calendar',  
+  'open-data-certificate',
+  'services-manager'
+]
+
 def ignoreBranches = [
   'gh-pages'
 ]
@@ -87,20 +97,22 @@ projects.each {
           }
         
           // Coverage
-          project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
-            reportDir "coverage/rcov"
-            targets {
-              "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                metric "TOTAL_COVERAGE"
-                healthy "90"
-                unhealthy "75"
-                unstable "0"
-              }
-              "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                metric "CODE_COVERAGE"
-                healthy "90"
-                unhealthy "75"
-                unstable "0"
+          if (!noCoverage.contains(projectName)) {
+            project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
+              reportDir "coverage/rcov"
+              targets {
+                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                  metric "TOTAL_COVERAGE"
+                  healthy "90"
+                  unhealthy "75"
+                  unstable "0"
+                }
+                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                  metric "CODE_COVERAGE"
+                  healthy "90"
+                  unhealthy "75"
+                  unstable "0"
+                }
               }
             }
           }
