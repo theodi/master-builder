@@ -114,6 +114,7 @@ git push origin CURRENT"""
                 "EscalateStatus" "false"
                 "RunIfJobSuccessful" "true"
                 script """\
+#!/bin/bash
 source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
 [[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
               }
