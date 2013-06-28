@@ -59,14 +59,17 @@ projects.each {
 
       // Publishers
       configure { project ->
+        
         // CI game
         project/publishers << "hudson.plugins.cigame.GamePublisher" {}
+        
         // Mail notifications
         project/publishers << "hudson.tasks.Mailer" {
           recipients "tech@theodi.org"
           dontNotifyEveryUnstableBuild "false"
           sendToIndividuals "true"
         }
+        
         // Post-build release tagging if on master
         if(branchName == "master") {
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
@@ -77,15 +80,15 @@ projects.each {
                     logText ""
                     operator "AND"
                   }
-                  "EscalateStatus" "false"
-                  "RunIfJobSuccessful" "true"
-                  script """\
+                }
+                "EscalateStatus" "false"
+                "RunIfJobSuccessful" "true"
+                script """\
 cd $WORKSPACE;
 git tag release-$BUILD_ID;
 git push origin release-$BUILD_ID;
 git tag -f CURRENT;
 git push origin CURRENT"""
-                }
               }
             }
           }
