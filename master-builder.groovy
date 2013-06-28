@@ -1,71 +1,77 @@
-def projectName = 'git-data-viewer'
+def projects = [
+  'git-data-viewer'
+]
 
-// Get the list of branches from github
-def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches")
-def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
+projects.each {
+  def projectName = it
 
-// Generate a job for each branch
-branches.each { 
-  def branchName = it.name
+  // Get the list of branches from github
+  def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches")
+  def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
 
-  job {
+  // Generate a job for each branch
+  branches.each { 
+    def branchName = it.name
+
+    job {
+
+      // Job name
+      name "dsl-test-${projectName}-${branchName}".replaceAll('/','-')
+
+      // Git configuration
+      scm {
+        git("git://github.com/theodi/${projectName}.git", branchName)
+      }
   
-    // Job name
-    name "dsl-test-${projectName}-${branchName}".replaceAll('/','-')
-
-    // Git configuration
-    scm {
-      git("git://github.com/theodi/${projectName}.git", branchName)
-    }
-    
-    // Trigger builds on github pushes
-    configure { project ->
-      project/triggers << "com.cloudbees.jenkins.GitHubPushTrigger" {
-        spec ""
-      }
-    }
-    
-    // Configure build wrappers
-    configure { project ->
-      // use colour xterm output
-      project/buildWrappers << "hudson.plugins.ansicolor.AnsiColorBuildWrapper" {
-        colorMapName "xterm"
-      }
-      // Use RVM environment '.'
-      project/buildWrappers << "ruby-proxy-object" {
-        ruby-object("ruby-class":"Jenkins::Plugin::Proxies::BuildWrapper", pluginid:"rvm") {
-          object("ruby-class":"RvmWrapper", pluginid:"rvm") {
-            impl(pluginid:"rvm", "ruby-class":"String", ".")
-          }
-          pluginid(pluginid:"rvm", "ruby-class":"String", "rvm")
+      // Trigger builds on github pushes
+      configure { project ->
+        project/triggers << "com.cloudbees.jenkins.GitHubPushTrigger" {
+          spec ""
         }
-      }            
-    }
-    
-    // Build steps: shell script
-    steps {
-        shell("""\
-#!/bin/bash
-
-[[ -s 'Gemfile' ]] && bundle --without=production
-[[ -s 'db' ]] && rake db:migrate
-rake""")
-    }
+      }
   
-    // Publishers
-    configure { project ->
-      // CI game
-      project/publishers << "hudson.plugins.cigame.GamePublisher" {}
-      // Mail notifications
-      project/publishers << "hudson.tasks.Mailer" {
-        recipients "tech@theodi.org"
-        dontNotifyEveryUnstableBuild "false"
-        sendToIndividuals "true"
+      // Configure build wrappers
+      configure { project ->
+        // use colour xterm output
+        project/buildWrappers << "hudson.plugins.ansicolor.AnsiColorBuildWrapper" {
+          colorMapName "xterm"
+        }
+        // Use RVM environment '.'
+        project/buildWrappers << "ruby-proxy-object" {
+          ruby-object("ruby-class":"Jenkins::Plugin::Proxies::BuildWrapper", pluginid:"rvm") {
+            object("ruby-class":"RvmWrapper", pluginid:"rvm") {
+              impl(pluginid:"rvm", "ruby-class":"String", ".")
+            }
+            pluginid(pluginid:"rvm", "ruby-class":"String", "rvm")
+          }
+        }            
       }
-      // Post-build release tagging if on master
-      if(branchName == "master") {
-        project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {}
+  
+      // Build steps: shell script
+      steps {
+          shell("""\
+  #!/bin/bash
+
+  [[ -s 'Gemfile' ]] && bundle --without=production
+  [[ -s 'db' ]] && rake db:migrate
+  rake""")
+      }
+
+      // Publishers
+      configure { project ->
+        // CI game
+        project/publishers << "hudson.plugins.cigame.GamePublisher" {}
+        // Mail notifications
+        project/publishers << "hudson.tasks.Mailer" {
+          recipients "tech@theodi.org"
+          dontNotifyEveryUnstableBuild "false"
+          sendToIndividuals "true"
+        }
+        // Post-build release tagging if on master
+        if(branchName == "master") {
+          project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {}
+        }
       }
     }
-  }
+  } 
 }
