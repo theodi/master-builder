@@ -1,6 +1,13 @@
 def projects = [
+  'csv-profiler',
+  'dashboards',
   'git-data-viewer',
-  'open-orgn-services'
+  'member-directory',
+  'odi-bootstrap',
+  'office-calendar',  
+  'open-data-certificate',
+  'open-orgn-services',
+  'services-manager'
 ]
 
 projects.each {
