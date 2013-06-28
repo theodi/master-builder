@@ -70,6 +70,25 @@ rake""")
           sendToIndividuals "true"
         }
         
+        // Coverage
+        project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
+          reportDir "coverage/rcov"
+          targets {
+            "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+              metric "TOTAL_COVERAGE"
+              healthy "90"
+              unhealthy "75"
+              unstable "0"
+            }
+            "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+              metric "CODE_COVERAGE"
+              healthy "90"
+              unhealthy "75"
+              unstable "0"
+            }
+          }
+        }
+        
         // Some post-build tasks for master
         if(branchName == "master") {
           // Post-build release tagging if on master
