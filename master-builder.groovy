@@ -51,7 +51,7 @@ projects.each {
       steps {
           shell("""\
   #!/bin/bash
-
+  source /var/lib/jenkins/env
   [[ -s 'Gemfile' ]] && bundle --without=production
   [[ -s 'db' ]] && rake db:migrate
   rake""")
