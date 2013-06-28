@@ -76,7 +76,7 @@ rake""")
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
             tasks {
               "hudson.plugins.postbuildtask.TaskProperties" {
-                "EscalateStatus" "false"
+                "EscalateStatus" "true"
                 "RunIfJobSuccessful" "true"
                 script """\
 cd \$WORKSPACE;
