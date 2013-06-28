@@ -1,5 +1,6 @@
 def projects = [
-  'git-data-viewer'
+  'git-data-viewer',
+  'open-orgn-services'
 ]
 
 projects.each {
