@@ -84,9 +84,9 @@ projects.each {
                 "EscalateStatus" "false"
                 "RunIfJobSuccessful" "true"
                 script """\
-cd $WORKSPACE;
-git tag release-$BUILD_ID;
-git push origin release-$BUILD_ID;
+cd \$WORKSPACE;
+git tag release-\$BUILD_ID;
+git push origin release-\$BUILD_ID;
 git tag -f CURRENT;
 git push origin CURRENT"""
               }
