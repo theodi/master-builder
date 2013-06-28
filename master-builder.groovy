@@ -69,7 +69,26 @@ projects.each {
         }
         // Post-build release tagging if on master
         if(branchName == "master") {
-          project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {}
+          project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
+            tasks {
+              "hudson.plugins.postbuildtask.TaskProperties" {
+                logTexts {
+                  "hudson.plugins.postbuildtask.LogProperties" {
+                    logText ""
+                    operator "AND"
+                  }
+                  "EscalateStatus" "false"
+                  "RunIfJobSuccessful" "true"
+                  script """\
+cd $WORKSPACE;
+git tag release-$BUILD_ID;
+git push origin release-$BUILD_ID;
+git tag -f CURRENT;
+git push origin CURRENT"""
+                }
+              }
+            }
+          }
         }
       }
     }
