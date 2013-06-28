@@ -86,44 +86,18 @@ rake""")
         // Publishers
         configure { project ->
         
-          // CI game
-          project/publishers << "hudson.plugins.cigame.GamePublisher" {}
-        
-          // Mail notifications
-          project/publishers << "hudson.tasks.Mailer" {
-            recipients "tech@theodi.org"
-            dontNotifyEveryUnstableBuild "false"
-            sendToIndividuals "true"
-          }
-        
-          // Coverage
-          if (!noCoverage.contains(projectName)) {
-            project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
-              reportDir "coverage/rcov"
-              targets {
-                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                  metric "TOTAL_COVERAGE"
-                  healthy "90"
-                  unhealthy "75"
-                  unstable "0"
-                }
-                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                  metric "CODE_COVERAGE"
-                  healthy "90"
-                  unhealthy "75"
-                  unstable "0"
-                }
-              }
-            }
-          }
-        
           // Some post-build tasks for master
           if(branchName == "master") {
             // Post-build release tagging if on master
             project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
               tasks {
                 "hudson.plugins.postbuildtask.TaskProperties" {
-                  logTexts {}
+                  logTexts {
+                    "hudson.plugins.postbuildtask.LogProperties" {
+                      logText ""
+                      operator "AND"
+                    }
+                  }
                   "EscalateStatus" "true"
                   "RunIfJobSuccessful" "true"
                   script """\
@@ -139,7 +113,12 @@ git push origin CURRENT"""
             project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
               tasks {
                 "hudson.plugins.postbuildtask.TaskProperties" {
-                  logTexts {}
+                  logTexts {
+                    "hudson.plugins.postbuildtask.LogProperties" {
+                      logText ""
+                      operator "AND"
+                    }
+                  }
                   "EscalateStatus" "false"
                   "RunIfJobSuccessful" "true"
                   script """\
@@ -149,6 +128,38 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
                 }
               }
             }          
+            
+            // CI game
+            project/publishers << "hudson.plugins.cigame.GamePublisher" {}
+        
+            // Coverage
+            if (!noCoverage.contains(projectName)) {
+              project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
+                reportDir "coverage/rcov"
+                targets {
+                  "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                    metric "TOTAL_COVERAGE"
+                    healthy "90"
+                    unhealthy "75"
+                    unstable "0"
+                  }
+                  "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                    metric "CODE_COVERAGE"
+                    healthy "90"
+                    unhealthy "75"
+                    unstable "0"
+                  }
+                }
+              }
+            }
+        
+            // Mail notifications
+            project/publishers << "hudson.tasks.Mailer" {
+              recipients "tech@theodi.org"
+              dontNotifyEveryUnstableBuild "false"
+              sendToIndividuals "true"
+            }
+        
           }
         }
       }
