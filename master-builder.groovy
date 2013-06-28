@@ -70,8 +70,9 @@ projects.each {
           sendToIndividuals "true"
         }
         
-        // Post-build release tagging if on master
+        // Some post-build tasks for master
         if(branchName == "master") {
+          // Post-build release tagging if on master
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
             tasks {
               "hudson.plugins.postbuildtask.TaskProperties" {
@@ -86,6 +87,18 @@ git push origin CURRENT"""
               }
             }
           }
+          // Push features to relish if available
+          project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
+            tasks {
+              "hudson.plugins.postbuildtask.TaskProperties" {
+                "EscalateStatus" "false"
+                "RunIfJobSuccessful" "true"
+                script """\
+source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
+[[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
+              }
+            }
+          }          
         }
       }
     }
