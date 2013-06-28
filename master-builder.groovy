@@ -75,12 +75,6 @@ projects.each {
           project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
             tasks {
               "hudson.plugins.postbuildtask.TaskProperties" {
-                logTexts {
-                  "hudson.plugins.postbuildtask.LogProperties" {
-                    logText ""
-                    operator "AND"
-                  }
-                }
                 "EscalateStatus" "false"
                 "RunIfJobSuccessful" "true"
                 script """\
