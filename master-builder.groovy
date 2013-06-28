@@ -17,7 +17,7 @@ projects.each {
     job {
 
       // Job name
-      name "dsl-test-${projectName}-${branchName}".replaceAll('/','-')
+      name "${projectName}-${branchName}".replaceAll('/','-')
 
       // Git configuration
       scm {
