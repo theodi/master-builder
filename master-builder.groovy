@@ -3,6 +3,7 @@ githubOauthToken = ''
 def projects = [
   'csv-profiler',
   'dashboards',
+  'data_kitten',
   'git-data-viewer',
   'member-directory',
   'office-calendar',  
