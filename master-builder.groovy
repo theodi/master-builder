@@ -5,7 +5,6 @@ def projects = [
   'dashboards',
   'git-data-viewer',
   'member-directory',
-  'odi-bootstrap',
   'office-calendar',  
   'open-data-certificate',
   'open-orgn-services',
@@ -16,7 +15,6 @@ def projects = [
 def noCoverage = [
   'csv-profiler',
   'member-directory',
-  'odi-bootstrap',
   'office-calendar',  
   'open-data-certificate',
   'services-manager'
