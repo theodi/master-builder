@@ -25,6 +25,11 @@ def ignoreBranches = [
   'gh-pages'
 ]
 
+def tagBranches = [
+  'master'  : 'CURRENT',
+  'staging' : 'STAGING'
+]
+
 projects.each {
   def projectName = it
 
@@ -88,8 +93,8 @@ rake""")
         configure { project ->
         
           // Some post-build tasks for master
-          if(branchName == "master") {
-            // Post-build release tagging if on master
+          if(tagBranches[branchName]) {
+            // Post-build release tagging
             project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
               tasks {
                 "hudson.plugins.postbuildtask.TaskProperties" {
@@ -103,13 +108,16 @@ rake""")
                   "RunIfJobSuccessful" "true"
                   script """\
 cd \$WORKSPACE;
-git tag release-\$BUILD_ID;
-git push origin release-\$BUILD_ID;
-git tag -f CURRENT;
-git push origin CURRENT"""
+git tag ${branchName}-\$BUILD_ID;
+git push origin ${branchName}-\$BUILD_ID;
+git tag -f ${tagBranches[branchName]};
+git push origin ${tagBranches[branchName]}"""
                 }
               }
             }
+          }
+
+          if(branchName == "master") {
             // Push features to relish if available
             project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
               tasks {
