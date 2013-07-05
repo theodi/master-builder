@@ -136,40 +136,40 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
 [[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
                 }
               }
-            }          
+            }
+          }          
             
-            // CI game
-            project/publishers << "hudson.plugins.cigame.GamePublisher" {}
-        
-            // Coverage
-            if (!noCoverage.contains(projectName)) {
-              project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
-                reportDir "coverage/rcov"
-                targets {
-                  "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                    metric "TOTAL_COVERAGE"
-                    healthy "90"
-                    unhealthy "75"
-                    unstable "0"
-                  }
-                  "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
-                    metric "CODE_COVERAGE"
-                    healthy "90"
-                    unhealthy "75"
-                    unstable "0"
-                  }
+          // CI game
+          project/publishers << "hudson.plugins.cigame.GamePublisher" {}
+      
+          // Coverage
+          if (!noCoverage.contains(projectName)) {
+            project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
+              reportDir "coverage/rcov"
+              targets {
+                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                  metric "TOTAL_COVERAGE"
+                  healthy "90"
+                  unhealthy "75"
+                  unstable "0"
+                }
+                "hudson.plugins.rubyMetrics.rcov.model.MetricTarget" {
+                  metric "CODE_COVERAGE"
+                  healthy "90"
+                  unhealthy "75"
+                  unstable "0"
                 }
               }
             }
-        
-            // Mail notifications
-            project/publishers << "hudson.tasks.Mailer" {
-              recipients "tech@theodi.org"
-              dontNotifyEveryUnstableBuild "false"
-              sendToIndividuals "true"
-            }
-        
           }
+          
+          // Mail notifications
+          project/publishers << "hudson.tasks.Mailer" {
+            recipients "tech@theodi.org"
+            dontNotifyEveryUnstableBuild "false"
+            sendToIndividuals "true"
+          }
+        
         }
       }
     }
