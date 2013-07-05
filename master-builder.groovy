@@ -163,6 +163,9 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
             }
           }
           
+          // Github notification
+          project/publishers << "com.cloudbees.jenkins.GitHubCommitNotifier"(plugin: "github@1.6") {}
+
           // Mail notifications
           project/publishers << "hudson.tasks.Mailer" {
             recipients "tech@theodi.org"
