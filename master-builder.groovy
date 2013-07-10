@@ -20,7 +20,8 @@ def noCoverage = [
 ]
 
 def ignoreBranches = [
-  'gh-pages'
+  'gh-pages',
+  'auto-generate-country-questionnaires'
 ]
 
 def tagBranches = [
