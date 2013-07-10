@@ -109,9 +109,8 @@ rake""")
                   script """\
 cd \$WORKSPACE;
 git tag ${branchName}-\$BUILD_ID;
-git push origin ${branchName}-\$BUILD_ID;
 git tag -f ${tagBranches[branchName]};
-git push origin ${tagBranches[branchName]}"""
+git push origin --tags --force"""
                 }
               }
             }
