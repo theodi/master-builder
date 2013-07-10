@@ -110,7 +110,7 @@ rake""")
 cd \$WORKSPACE;
 git tag ${branchName}-\$BUILD_ID;
 git tag -f ${tagBranches[branchName]};
-git push --tags --force"""
+git push origin --tags --force"""
                 }
               }
             }
