@@ -1,5 +1,3 @@
-githubOauthToken = ''
-
 def projects = [
   'csv-profiler',
   'dashboards',
@@ -34,7 +32,7 @@ projects.each {
   def projectName = it
 
   // Get the list of branches from github
-  def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches?access_token=${githubOauthToken}")
+  def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches?access_token=${GITHUB_OAUTH_TOKEN}")
   def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
 
   // Generate a job for each branch
