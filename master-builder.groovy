@@ -44,11 +44,13 @@ projects.each {
     
     // Check ignored branches
     if (!ignoreBranches.contains(branchName)) {
-    
+
+      def jobName = "${projectName}-${branchName}".replaceAll('/','-')
+
       job {
 
         // Job name
-        name "${projectName}-${branchName}".replaceAll('/','-')
+        name jobName
 
         // Git configuration
         scm {
@@ -175,6 +177,9 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
         
         }
       }
+      
+      queue jobName
+      
     }
   } 
 }
