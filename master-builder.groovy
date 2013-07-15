@@ -178,7 +178,7 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
         }
       }
       
-      queue jobName
+      // queue jobName
       
     }
   } 
