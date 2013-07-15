@@ -1,2 +1,4 @@
 /job-dsl-plugin/
 *.xml
+
+.idea/
