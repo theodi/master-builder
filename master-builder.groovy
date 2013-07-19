@@ -8,7 +8,8 @@ def projects = [
   'open-data-certificate',
   'open-orgn-services',
   'services-manager',
-  'noodile'
+  'noodile',
+  'govuk_content_models'
 ]
 
 // Not all projects include coverage information
@@ -18,7 +19,8 @@ def noCoverage = [
   'office-calendar',  
   'open-data-certificate',
   'services-manager',
-  'noodile'
+  'noodile',
+  'govuk_content_models'
 ]
 
 def ignoreBranches = [
