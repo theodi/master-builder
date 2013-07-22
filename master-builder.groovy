@@ -9,7 +9,10 @@ def projects = [
   'open-orgn-services',
   'services-manager',
   'noodile',
-  'odi_content_models'
+  'odi_content_models',
+  'panopticon',
+  'publisher',
+  'govuk_content_api'
 ]
 
 // Not all projects include coverage information
@@ -20,7 +23,10 @@ def noCoverage = [
   'open-data-certificate',
   'services-manager',
   'noodile',
-  'odi_content_models'
+  'odi_content_models',
+  'panopticon',
+  'publisher',
+  'govuk_content_api'
 ]
 
 def ignoreBranches = [
