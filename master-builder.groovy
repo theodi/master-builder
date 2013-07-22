@@ -8,8 +8,7 @@ def projects = [
   'open-data-certificate',
   'open-orgn-services',
   'services-manager',
-  'noodile',
-  'govuk_content_models'
+  'noodile'
 ]
 
 // Not all projects include coverage information
