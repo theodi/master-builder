@@ -91,7 +91,7 @@ source /var/lib/jenkins/env
 [[ -s 'package.json' ]] && npm install
 [[ -s 'Gemfile' ]] && bundle --without=production
 [[ -s 'db' ]] && rake db:migrate
-rake""")
+rake --trace""")
         }
 
         // Publishers
