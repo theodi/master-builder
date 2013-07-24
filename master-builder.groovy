@@ -12,7 +12,8 @@ def projects = [
   'odi_content_models',
   'panopticon',
   'publisher',
-  'content_api'
+  'content_api',
+  'static'
 ]
 
 // Not all projects include coverage information
@@ -26,7 +27,8 @@ def noCoverage = [
   'odi_content_models',
   'panopticon',
   'publisher',
-  'content_api'
+  'content_api',
+  'static'
 ]
 
 def ignoreBranches = [
