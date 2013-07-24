@@ -14,7 +14,8 @@ def projects = [
   'publisher',
   'content_api',
   'static',
-  'signonotron2'
+  'signonotron2',
+  'asset-manager'
 ]
 
 // Not all projects include coverage information
@@ -30,7 +31,8 @@ def noCoverage = [
   'publisher',
   'content_api',
   'static',
-  'signonotron2'
+  'signonotron2',
+	'asset-manager'
 ]
 
 def ignoreBranches = [
