@@ -16,7 +16,8 @@ def projects = [
   'static',
   'signonotron2',
   'asset-manager',
-  'people'
+  'people',
+  'frontend-news'
 ]
 
 // Not all projects include coverage information
@@ -33,8 +34,9 @@ def noCoverage = [
   'content_api',
   'static',
   'signonotron2',
-	'asset-manager',
-  'people'
+  'asset-manager',
+  'people',
+  'frontend-news'
 ]
 
 def ignoreBranches = [
