@@ -52,9 +52,22 @@ def tagBranches = [
 projects.each {
   def projectName = it
 
-  // Get the list of branches from github
-  def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches?access_token=${GITHUB_OAUTH_TOKEN}")
-  def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
+  def branches = []
+
+  for (int retries = 0; retries < 3; retries++) {
+    try {
+      // Get the list of branches from github
+      def branchApi = new URL("https://api.github.com/repos/theodi/${projectName}/branches?access_token=${GITHUB_OAUTH_TOKEN}")
+      branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
+    }
+    catch (java.io.IOException ex) {
+      sleep(1000)
+    }
+  }
+  if (branches.isEmpty()) {
+    throw new Exception("Could not fetch branch list for ${projectName}.")
+  }
+  
 
   // Generate a job for each branch
   branches.each { 
