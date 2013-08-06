@@ -19,7 +19,8 @@ def projects = [
   'asset-manager',
   'people',
   'frontend-news',
-  'odidown'
+  'odidown',
+	'ODLifier'
 ]
 
 // Not all projects include coverage information
