@@ -20,7 +20,8 @@ def projects = [
   'people',
   'frontend-news',
   'odidown',
-	'ODLifier'
+  'ODLifier',
+  'alternate-rails'
 ]
 
 // Not all projects include coverage information
