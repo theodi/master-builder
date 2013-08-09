@@ -27,8 +27,6 @@ def projects = [
 // Not all projects include coverage information
 def noCoverage = [
   'csv-profiler',
-  'member-directory',
-  'office-calendar',  
   'open-data-certificate',
   'buildmemes',
   'services-manager',
