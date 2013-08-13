@@ -45,8 +45,10 @@ def noCoverage = [
 
 def ignoreBranches = [
   'gh-pages',
-  'auto-generate-country-questionnaires',
-  'upstream-master'
+  'upstream-master',
+  // Temporary upstream PR branches, can be removed later
+  'asset-manager-configuration-help',
+  'supported-permissions-in-app-create-task'
 ]
 
 def tagBranches = [
