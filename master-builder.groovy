@@ -21,7 +21,9 @@ def projects = [
   'frontend-news',
   'odidown',
   'ODLifier',
-  'alternate-rails'
+  'alternate-rails',
+  'juvia',
+  'juvia_rails'
 ]
 
 // Not all projects include coverage information
@@ -40,7 +42,8 @@ def noCoverage = [
   'asset-manager',
   'people',
   'frontend-news',
-  'odidown'
+  'odidown',
+  'juvia'
 ]
 
 def ignoreBranches = [
