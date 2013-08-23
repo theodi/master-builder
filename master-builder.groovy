@@ -22,7 +22,6 @@ def projects = [
   'odidown',
   'ODLifier',
   'alternate-rails',
-  'juvia',
   'juvia_rails'
 ]
 
@@ -42,8 +41,7 @@ def noCoverage = [
   'asset-manager',
   'people',
   'frontend-news',
-  'odidown',
-  'juvia'
+  'odidown'
 ]
 
 def ignoreBranches = [
