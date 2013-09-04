@@ -20,6 +20,7 @@ def projects = [
   'people',
   'frontend-news',
   'frontend-www',
+  'frontend-courses',
   'odidown',
   'ODLifier',
   'alternate-rails',
@@ -43,6 +44,7 @@ def noCoverage = [
   'people',
   'frontend-news',
   'frontend-www',
+  'frontend-courses',
   'odidown'
 ]
 
