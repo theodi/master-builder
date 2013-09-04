@@ -42,6 +42,7 @@ def noCoverage = [
   'asset-manager',
   'people',
   'frontend-news',
+  'frontend-www',
   'odidown'
 ]
 
