@@ -19,6 +19,7 @@ def projects = [
   'asset-manager',
   'people',
   'frontend-news',
+  'frontend-www',
   'odidown',
   'ODLifier',
   'alternate-rails',
@@ -98,7 +99,7 @@ projects.each {
   
         // Trigger builds on github pushes
         configure { project ->
-          project/triggers << "com.cloudbees.jenkins.GitHubPushTrigger" {
+          project/triggers << "com.arsebees.jenkins.GitHubPushTrigger" {
             spec ""
           }
         }
@@ -205,7 +206,7 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
           }
           
           // Github notification
-          project/publishers << "com.cloudbees.jenkins.GitHubCommitNotifier"(plugin: "github@1.6") {}
+          project/publishers << "com.arsebees.jenkins.GitHubCommitNotifier"(plugin: "github@1.6") {}
 
           // Mail notifications
           project/publishers << "hudson.tasks.Mailer" {
