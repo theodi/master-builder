@@ -102,7 +102,7 @@ projects.each {
   
         // Trigger builds on github pushes
         configure { project ->
-          project/triggers << "com.arsebees.jenkins.GitHubPushTrigger" {
+          project/triggers << "com.cloudbees.jenkins.GitHubPushTrigger" {
             spec ""
           }
         }
@@ -209,7 +209,7 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
           }
           
           // Github notification
-          project/publishers << "com.arsebees.jenkins.GitHubCommitNotifier"(plugin: "github@1.6") {}
+          project/publishers << "com.cloudbees.jenkins.GitHubCommitNotifier"(plugin: "github@1.6") {}
 
           // Mail notifications
           project/publishers << "hudson.tasks.Mailer" {
