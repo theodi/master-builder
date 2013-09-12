@@ -22,7 +22,7 @@ def projects = [
   'frontend-www',
   'frontend-courses',
   'odidown',
-  'ODLifier',
+  'odlifier',
   'alternate-rails',
   'juvia_rails'
 ]
