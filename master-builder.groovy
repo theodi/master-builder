@@ -24,7 +24,8 @@ def projects = [
   'odidown',
   'odlifier',
   'alternate-rails',
-  'juvia_rails'
+  'juvia_rails',
+  'my_society-map_it'
 ]
 
 // Not all projects include coverage information
@@ -45,8 +46,7 @@ def noCoverage = [
   'frontend-news',
   'frontend-www',
   'frontend-courses',
-  'odidown',
-  'my_society-map_it'
+  'odidown'
 ]
 
 def ignoreBranches = [
