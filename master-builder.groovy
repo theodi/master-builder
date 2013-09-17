@@ -45,7 +45,8 @@ def noCoverage = [
   'frontend-news',
   'frontend-www',
   'frontend-courses',
-  'odidown'
+  'odidown',
+  'my_society-map_it'
 ]
 
 def ignoreBranches = [
