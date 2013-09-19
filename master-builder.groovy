@@ -25,7 +25,8 @@ def projects = [
   'odlifier',
   'alternate-rails',
   'juvia_rails',
-  'my_society-map_it'
+  'my_society-map_it',
+  'leaflet-rails'
 ]
 
 // Not all projects include coverage information
