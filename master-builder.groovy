@@ -130,6 +130,7 @@ projects.each {
         steps {
             shell("""\
 #!/bin/bash
+export LANG=en_US.UTF-8
 source /var/lib/jenkins/env
 [[ -s 'package.json' ]] && npm install
 [[ -s 'Gemfile' ]] && bundle --without=production
