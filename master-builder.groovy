@@ -26,7 +26,8 @@ def projects = [
   'alternate-rails',
   'juvia_rails',
   'my_society-map_it',
-  'leaflet-rails'
+  'leaflet-rails',
+  'gds-api-adapters'
 ]
 
 // Not all projects include coverage information
