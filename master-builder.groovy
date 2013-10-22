@@ -48,7 +48,8 @@ def noCoverage = [
   'frontend-news',
   'frontend-www',
   'frontend-courses',
-  'odidown'
+  'odidown',
+  'gds-api-adapters'
 ]
 
 def ignoreBranches = [
