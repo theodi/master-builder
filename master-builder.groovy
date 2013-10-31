@@ -135,6 +135,7 @@ source /var/lib/jenkins/env
 [[ -s 'package.json' ]] && npm install
 [[ -s 'Gemfile' ]] && bundle --without=production
 [[ -s 'db' ]] && rake db:migrate
+[[ -s 'app/assets' ]] && rake assets:precompile
 rake --trace""")
         }
 
@@ -183,6 +184,26 @@ git push origin --tags --force"""
 source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
 [[ -s 'features' ]] && bundle exec relish push theodi/${projectName}"""
                 }
+              }
+            }
+          }
+          
+          // Clean up assets after build
+          project/publishers << "hudson.plugins.postbuildtask.PostbuildTask" {
+            tasks {
+              "hudson.plugins.postbuildtask.TaskProperties" {
+                logTexts {
+                  "hudson.plugins.postbuildtask.LogProperties" {
+                    logText ""
+                    operator "AND"
+                  }
+                }
+                "EscalateStatus" "false"
+                "RunIfJobSuccessful" "false"
+                script """\
+#!/bin/bash
+source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
+[[ -s 'app/assets' ]] && rake assets:clean"""
               }
             }
           }          
