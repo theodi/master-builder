@@ -125,7 +125,7 @@ source /var/lib/jenkins/env
 [[ -s 'package.json' ]] && npm install
 [[ -s 'Gemfile' ]] && bundle --without=production
 [[ -s 'db' ]] && rake db:migrate
-[[ -s 'app/assets' ]] && bundle exec rake assets:precompile
+[[ -s 'app/assets' ]] && RAILS_ENV=development bundle exec rake assets:precompile
 rake --trace""")
         }
 
@@ -193,7 +193,7 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
                 script """\
 #!/bin/bash
 source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
-[[ -s 'app/assets' ]] && bundle exec rake assets:clean"""
+[[ -s 'app/assets' ]] && RAILS_ENV=development bundle exec rake assets:clean"""
               }
             }
           }          
