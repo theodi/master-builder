@@ -96,6 +96,9 @@ projects.each {
         // Job name
         name jobName
 
+        // Only keep last 20 builds
+        logRotator(-1, 20, -1, 20)
+
         // Git configuration
         scm {
           git("git@github.com:theodi/${projectName}.git", branchName)
