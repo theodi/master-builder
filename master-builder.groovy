@@ -135,7 +135,7 @@ projects.each {
 export LANG=en_US.UTF-8
 source /var/lib/jenkins/env
 [[ -s 'package.json' ]] && npm install
-[[ -s 'Gemfile' ]] && bundle --without=production
+[[ -s 'Gemfile' ]] && bundle --without=production:development
 [[ -s 'db' ]] && rake db:migrate
 [[ -s 'app/assets' ]] && RAILS_ENV=development bundle exec rake assets:precompile
 rake --trace""")
