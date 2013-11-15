@@ -27,7 +27,8 @@ def projects = [
   'juvia_rails',
   'my_society-map_it',
   'leaflet-rails',
-  'coopy-ruby'
+  'coopy-ruby',
+  'breasal'
 ]
 
 // Not all projects include coverage information
