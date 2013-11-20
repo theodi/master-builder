@@ -29,7 +29,8 @@ def projects = [
   'leaflet-rails',
   'coopy-ruby',
   'breasal',
-  'gds-api-adapters'
+  'gds-api-adapters',
+  'philbot'
 ]
 
 // Not all projects include coverage information
