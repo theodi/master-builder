@@ -26,7 +26,8 @@ def projects = [
   'alternate-rails',
   'juvia_rails',
   'my_society-map_it',
-  'leaflet-rails'
+  'leaflet-rails',
+  'metrics-api'
 ]
 
 // Not all projects include coverage information
@@ -46,7 +47,8 @@ def noCoverage = [
   'people',
   'frontend-news',
   'frontend-courses',
-  'odidown'
+  'odidown',
+  'metrics-api'
 ]
 
 def ignoreBranches = [
