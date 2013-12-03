@@ -27,7 +27,11 @@ def projects = [
   'juvia_rails',
   'my_society-map_it',
   'leaflet-rails',
-  'metrics-api'
+  'metrics-api',
+  'coopy-ruby',
+  'breasal',
+  'gds-api-adapters',
+  'philbot'
 ]
 
 // Not all projects include coverage information
@@ -97,6 +101,9 @@ projects.each {
 
         // Job name
         name jobName
+
+        // Only keep last 20 builds
+        logRotator(-1, 20, -1, 20)
 
         // Git configuration
         scm {
@@ -211,7 +218,21 @@ source "/var/lib/jenkins/.rvm/scripts/rvm" && rvm use .
             
           // CI game
           project/publishers << "hudson.plugins.cigame.GamePublisher" {}
-      
+
+          // Clean up workspace afterwards
+          project/publishers << "hudson.plugins.ws__cleanup.WsCleanup"(plugin: "ws-cleanup@0.19") {
+            deleteDirs          "false"
+            skipWhenFailed      "false"
+            cleanWhenSuccess    "true"
+            cleanWhenUnstable   "true"
+            cleanWhenFailure    "true"
+            cleanWhenNotBuilt   "true"
+            cleanWhenAborted    "true"
+            notFailBuild        "false"
+            cleanupMatrixParent "false"
+            externalDelete      ""
+          }
+
           // Coverage
           if (!noCoverage.contains(projectName)) {
             project/publishers << "hudson.plugins.rubyMetrics.rcov.RcovPublisher" {
