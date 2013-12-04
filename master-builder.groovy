@@ -2,6 +2,7 @@ def projects = [
   'csv-profiler',
   'dashboards',
   'data_kitten',
+  'datapackage.rb',
   'git-data-viewer',
   'member-directory',
   'office-calendar',  
@@ -45,7 +46,8 @@ def noCoverage = [
   'asset-manager',
   'people',
   'odidown',
-  'metrics-api'
+  'metrics-api',
+  'datapackage.rb'
 ]
 
 def ignoreBranches = [
