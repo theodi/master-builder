@@ -27,7 +27,8 @@ def projects = [
   'coopy-ruby',
   'breasal',
   'gds-api-adapters',
-  'philbot'
+  'philbot',
+  'dapaas-frontend'
 ]
 
 // Not all projects include coverage information
