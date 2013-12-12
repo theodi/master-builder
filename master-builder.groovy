@@ -140,7 +140,7 @@ source /var/lib/jenkins/env
 [[ -s 'Gemfile' ]] && bundle --without=production
 [[ -s 'db' ]] && rake db:migrate
 [[ -s 'app/assets' ]] && RAILS_ENV=development bundle exec rake assets:precompile
-rake --trace""")
+bundle exec rake --trace""")
         }
 
         // Publishers
