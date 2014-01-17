@@ -27,7 +27,6 @@ def projects = [
   'coopy-ruby',
   'breasal',
   'gds-api-adapters',
-  'philbot',
   'dapaas-frontend'
 ]
 
