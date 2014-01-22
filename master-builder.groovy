@@ -1,6 +1,5 @@
 def projects = [
   'csv-profiler',
-  'dashboards',
   'data_kitten',
   'datapackage.rb',
   'git-data-viewer',
