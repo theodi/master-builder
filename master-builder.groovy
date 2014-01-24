@@ -13,7 +13,6 @@ def projects = [
   'odi_content_models',
   'panopticon',
   'publisher',
-  'content_api',
   'static',
   'signonotron2',
   'asset-manager',
