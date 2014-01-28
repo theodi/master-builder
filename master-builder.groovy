@@ -22,7 +22,6 @@ def projects = [
   'metrics-api',
   'coopy-ruby',
   'breasal',
-  'dapaas-frontend'
 ]
 
 // Not all projects include coverage information
