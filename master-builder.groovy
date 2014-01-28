@@ -16,7 +16,6 @@ def projects = [
   'static',
   'signonotron2',
   'asset-manager',
-  'frontend-www',
   'odidown',
   'odlifier',
   'alternate-rails',
