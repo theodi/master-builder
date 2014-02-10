@@ -7,7 +7,6 @@ def projects = [
   'office-calendar',  
   'open-data-certificate',
   'open-orgn-services',
-  'buildmemes',
   'services-manager',
   'noodile',
   'panopticon',
@@ -27,7 +26,6 @@ def projects = [
 def noCoverage = [
   'csv-profiler',
   'open-data-certificate',
-  'buildmemes',
   'services-manager',
   'noodile',
   'panopticon',
