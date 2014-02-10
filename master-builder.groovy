@@ -3,7 +3,6 @@ def projects = [
   'data_kitten',
   'datapackage.rb',
   'git-data-viewer',
-  'member-directory',
   'office-calendar',  
   'open-data-certificate',
   'open-orgn-services',
