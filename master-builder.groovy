@@ -15,7 +15,6 @@ def projects = [
   'asset-manager',
   'odidown',
   'odlifier',
-  'alternate-rails',
   'juvia_rails',
   'metrics-api',
   'coopy-ruby',
