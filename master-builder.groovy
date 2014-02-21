@@ -1,6 +1,5 @@
 def projects = [
   'csv-profiler',
-  'data_kitten',
   'datapackage.rb',
   'git-data-viewer',
   'office-calendar',  
@@ -15,8 +14,7 @@ def projects = [
   'odidown',
   'odlifier',
   'juvia_rails',
-  'metrics-api',
-  'coopy-ruby',
+  'metrics-api'
 ]
 
 // Not all projects include coverage information
