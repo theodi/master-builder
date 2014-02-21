@@ -17,7 +17,6 @@ def projects = [
   'juvia_rails',
   'metrics-api',
   'coopy-ruby',
-  'breasal',
 ]
 
 // Not all projects include coverage information
