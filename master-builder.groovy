@@ -1,6 +1,5 @@
 def projects = [
   'csv-profiler',
-  'datapackage.rb',
   'git-data-viewer',
   'office-calendar',  
   'open-data-certificate',
@@ -31,7 +30,6 @@ def noCoverage = [
   'people',
   'odidown',
   'metrics-api',
-  'datapackage.rb'
 ]
 
 def ignoreBranches = [
