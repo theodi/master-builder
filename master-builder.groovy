@@ -9,7 +9,6 @@ def projects = [
   'publisher',
   'signonotron2',
   'asset-manager',
-  'odidown',
   'odlifier',
   'metrics-api'
 ]
@@ -25,7 +24,6 @@ def noCoverage = [
   'signonotron2',
   'asset-manager',
   'people',
-  'odidown',
   'metrics-api',
 ]
 
