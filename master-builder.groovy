@@ -11,7 +11,6 @@ def projects = [
   'asset-manager',
   'odidown',
   'odlifier',
-  'juvia_rails',
   'metrics-api'
 ]
 
