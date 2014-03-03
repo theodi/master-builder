@@ -1,5 +1,4 @@
 def projects = [
-  'git-data-viewer',
   'office-calendar',  
   'open-data-certificate',
   'open-orgn-services',
