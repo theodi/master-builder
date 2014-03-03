@@ -1,5 +1,4 @@
 def projects = [
-  'csv-profiler',
   'git-data-viewer',
   'office-calendar',  
   'open-data-certificate',
@@ -15,7 +14,6 @@ def projects = [
 
 // Not all projects include coverage information
 def noCoverage = [
-  'csv-profiler',
   'open-data-certificate',
   'noodile',
   'panopticon',
