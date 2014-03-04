@@ -5,8 +5,7 @@ def projects = [
   'panopticon',
   'publisher',
   'signonotron2',
-  'asset-manager',
-  'odlifier'
+  'asset-manager'
 ]
 
 // Not all projects include coverage information
@@ -15,10 +14,8 @@ def noCoverage = [
   'noodile',
   'panopticon',
   'publisher',
-  'content_api',
   'signonotron2',
-  'asset-manager',
-  'people'
+  'asset-manager'
 ]
 
 def ignoreBranches = [
