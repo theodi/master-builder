@@ -1,7 +1,6 @@
 def projects = [
   'office-calendar',  
   'open-data-certificate',
-  'open-orgn-services',
   'noodile',
   'panopticon',
   'publisher',
