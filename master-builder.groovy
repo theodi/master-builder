@@ -21,6 +21,7 @@ def noCoverage = [
 def ignoreBranches = [
   'gh-pages',
   'upstream-master',
+  'travisify',
   // Temporary upstream PR branches, can be removed later
   'asset-manager-configuration-help',
   'supported-permissions-in-app-create-task'
