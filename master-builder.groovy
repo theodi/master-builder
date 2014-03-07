@@ -1,6 +1,5 @@
 def projects = [
   'office-calendar',  
-  'open-data-certificate',
   'noodile',
   'panopticon',
   'publisher',
@@ -10,7 +9,6 @@ def projects = [
 
 // Not all projects include coverage information
 def noCoverage = [
-  'open-data-certificate',
   'noodile',
   'panopticon',
   'publisher',
