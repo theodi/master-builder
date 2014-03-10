@@ -3,7 +3,6 @@ def projects = [
   'noodile',
   'panopticon',
   'publisher',
-  'signonotron2',
   'asset-manager'
 ]
 
@@ -12,7 +11,6 @@ def noCoverage = [
   'noodile',
   'panopticon',
   'publisher',
-  'signonotron2',
   'asset-manager'
 ]
 
