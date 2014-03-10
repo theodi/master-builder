@@ -1,13 +1,11 @@
 def projects = [
   'office-calendar',  
-  'noodile',
   'publisher',
   'asset-manager'
 ]
 
 // Not all projects include coverage information
 def noCoverage = [
-  'noodile',
   'publisher',
   'asset-manager'
 ]
