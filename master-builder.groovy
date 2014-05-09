@@ -1,13 +1,11 @@
 def projects = [
   'office-calendar',  
-  'publisher',
-  'asset-manager'
+  'publisher'
 ]
 
 // Not all projects include coverage information
 def noCoverage = [
-  'publisher',
-  'asset-manager'
+  'publisher'
 ]
 
 def ignoreBranches = [
@@ -15,7 +13,6 @@ def ignoreBranches = [
   'upstream-master',
   'travisify',
   // Temporary upstream PR branches, can be removed later
-  'asset-manager-configuration-help',
   'supported-permissions-in-app-create-task'
 ]
 
