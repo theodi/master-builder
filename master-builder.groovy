@@ -1,5 +1,4 @@
 def projects = [
-  'office-calendar',  
   'publisher'
 ]
 
