@@ -1,10 +1,8 @@
 def projects = [
-  'publisher'
 ]
 
 // Not all projects include coverage information
 def noCoverage = [
-  'publisher'
 ]
 
 def ignoreBranches = [
